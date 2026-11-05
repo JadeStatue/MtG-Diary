@@ -1,0 +1,125 @@
+{
+  "events": [
+    {
+      "id": "fanfinity-rc-athens-2023",
+      "name": "European Regional Championship Athens",
+      "date": "2023-06-03",
+      "year": "2023",
+      "format": "Pioneer",
+      "city": "Athens",
+      "country": "Greece",
+      "region": "Europe / EMEA",
+      "organizer": {
+        "name": "Fanfinity",
+        "region": "Europe / EMEA",
+        "official": true
+      },
+      "archetypes": [
+        {
+          "rank": "Winner",
+          "name": "Rakdos Midrange",
+          "share": "28.0%",
+          "player": "Javier Dominguez",
+          "mainboard": [
+            "4 Thoughtseize",
+            "4 Bloodtithe Harvester",
+            "4 Fable of the Mirror-Breaker",
+            "3 Fatal Push",
+            "2 Blood Crypt",
+            "4 Blackcleave Cliffs"
+          ],
+          "sideboard": [
+            "2 Duress",
+            "2 Rona's Vortex",
+            "2 Ray of Enfeeblement"
+          ]
+        },
+        {
+          "rank": "Runner-Up",
+          "name": "Mono-Green Devotion",
+          "share": "21.5%",
+          "player": "Top 8 Competitor",
+          "mainboard": [
+            "4 Karn, the Great Creator",
+            "4 Cavalier of Thorns",
+            "4 Llanowar Elves",
+            "4 Elvish Mystic",
+            "4 Nykthos, Shrine to Nyx"
+          ],
+          "sideboard": [
+            "1 The Chain Veil",
+            "1 Pithing Needle"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scg-con-baltimore-2024",
+      "name": "SCG CON Baltimore Modern Open",
+      "date": "2024-05-18",
+      "year": "2024",
+      "format": "Modern",
+      "city": "Baltimore",
+      "country": "USA",
+      "region": "North America (USA)",
+      "organizer": {
+        "name": "StarCityGames (SCG CON)",
+        "region": "North America (USA)",
+        "official": true
+      },
+      "archetypes": [
+        {
+          "rank": "1st Place",
+          "name": "Izzet Murktide",
+          "share": "16.4%",
+          "player": "Jane Doe",
+          "mainboard": [
+            "4 Ragavan, Nimble Pilferer",
+            "4 Murktide Regent",
+            "4 Dragon's Rage Channeler",
+            "4 Counterspell",
+            "4 Lightning Bolt",
+            "18 Island"
+          ],
+          "sideboard": [
+            "2 Blood Moon",
+            "2 Flusterstorm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bigmagic-jp-2023",
+      "name": "Big Magic Open Tokyo",
+      "date": "2023-11-12",
+      "year": "2023",
+      "format": "Standard",
+      "city": "Tokyo",
+      "country": "Japan",
+      "region": "Asia-Pacific (Japan)",
+      "organizer": {
+        "name": "Big Magic",
+        "region": "Asia-Pacific (Japan)",
+        "official": true
+      },
+      "archetypes": [
+        {
+          "rank": "Winner",
+          "name": "Esper Midrange",
+          "share": "22.1%",
+          "player": "Kenji Tsumura",
+          "mainboard": [
+            "4 Raffine, Scheming Seer",
+            "4 Deep-Cavern Bat",
+            "4 Go for the Throat",
+            "3 Wedding Announcement"
+          ],
+          "sideboard": [
+            "2 Disdainful Stroke",
+            "2 Cut Down"
+          ]
+        }
+      ]
+    }
+  ]
+}

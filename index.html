@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MTG Historical Metagame Archive (Text-Only)</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card-bg: #161922;
+      --border: #2a2e3d;
+      --text: #e2e8f0;
+      --muted: #8b949e;
+      --accent: #e5a93b;
+      --highlight: #212634;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      padding: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .container { max-width: 1080px; margin: 0 auto; }
+
+    header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 { font-size: 1.4rem; font-weight: 700; color: var(--accent); letter-spacing: -0.5px; }
+    p.subtitle { color: var(--muted); font-size: 0.8rem; margin-top: 0.2rem; }
+
+    /* Filters Section */
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .field-group { display: flex; flex-direction: column; gap: 0.25rem; }
+    label { font-size: 0.7rem; text-transform: uppercase; color: var(--muted); font-weight: 600; letter-spacing: 0.5px; }
+    
+    select {
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.6rem;
+      font-size: 0.85rem;
+      font-family: inherit;
+    }
+
+    /* Layout */
+    .grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 1.5rem; }
+    @media (max-width: 800px) { .grid { grid-template-columns: 1fr; } }
+
+    .section-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.25rem;
+    }
+
+    /* Event Card */
+    .event-card {
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .event-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+    }
+
+    .event-title { font-weight: 700; font-size: 0.95rem; color: #ffffff; }
+    .event-meta { font-size: 0.75rem; color: var(--muted); margin-top: 0.1rem; }
+    .tag { background: var(--highlight); border: 1px solid var(--border); padding: 0.1rem 0.4rem; font-size: 0.7rem; color: var(--accent); }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin-top: 0.75rem; font-size: 0.8rem; }
+    th, td { text-align: left; padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--border); }
+    th { font-size: 0.70rem; color: var(--muted); text-transform: uppercase; }
+    
+    tr.clickable:hover { background-color: var(--highlight); cursor: pointer; }
+
+    /* Inspector */
+    .deck-section-label { font-size: 0.75rem; color: var(--accent); text-transform: uppercase; margin-top: 0.75rem; margin-bottom: 0.25rem; }
+    .card-list { list-style: none; font-size: 0.8rem; }
+    .card-list li {
+      padding: 0.2rem 0;
+      border-bottom: 1px dashed var(--border);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      background: var(--highlight);
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 0.6rem;
+      font-size: 0.75rem;
+      font-family: inherit;
+      cursor: pointer;
+      margin-top: 1rem;
+      text-align: center;
+      font-weight: bold;
+    }
+    .btn:hover { border-color: var(--accent); background: var(--border); }
+    .muted-text { color: var(--muted); font-size: 0.8rem; text-align: center; padding: 2rem; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>MTG METAGAME ARCHIVE</h1>
+    <p class="subtitle">[Text-Only Historical Format, Region & Organizer Explorer]</p>
+  </header>
+
+  <!-- Filter Bar -->
+  <div class="controls">
+    <div class="field-group">
+      <label for="format">Format</label>
+      <select id="format" onchange="render()">
+        <option value="ALL">All Formats</option>
+        <option value="Standard">Standard</option>
+        <option value="Modern">Modern</option>
+        <option value="Pioneer">Pioneer</option>
+        <option value="Legacy">Legacy</option>
+      </select>
+    </div>
+
+    <div class="field-group">
+      <label for="organizer">Tournament Organizer</label>
+      <select id="organizer" onchange="render()">
+        <option value="ALL">All Organizers</option>
+        <optgroup label="Official Regional Partners">
+          <option value="fanfinity">Fanfinity (EMEA)</option>
+          <option value="scg">StarCityGames (USA)</option>
+          <option value="facetoface">Face to Face (Canada)</option>
+          <option value="bigmagic">Big Magic (Japan)</option>
+        </optgroup>
+        <optgroup label="Independent TOs">
+          <option value="axion">Axion Now (UK)</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <div class="field-group">
+      <label for="year">Era / Year</label>
+      <select id="year" onchange="render()">
+        <option value="ALL">All Eras</option>
+        <option value="2024">2024</option>
+        <option value="2023">2023</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- App Layout -->
+  <div class="grid">
+    <!-- Events Column -->
+    <div>
+      <div class="section-title">Historical Events</div>
+      <div id="events-list"></div>
+    </div>
+
+    <!-- Inspector Column -->
+    <div>
+      <div class="section-title">Decklist Inspector</div>
+      <div id="deck-inspector" class="event-card">
+        <p class="muted-text">Select an archetype row from any tournament to view the text decklist.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let dataset = [];
+
+  // Fetch JSON payload generated by Python script
+  async function loadData() {
+    try {
+      const response = await fetch('mtg_metagame_archive.json');
+      const data = await response.json();
+      dataset = data.events || [];
+      render();
+    } catch (err) {
+      console.error("Could not load local mtg_metagame_archive.json:", err);
+      document.getElementById('events-list').innerHTML = `
+        <div class="event-card muted-text">
+          Failed to fetch data file. Run <code>python scraper.py</code> to generate <code>mtg_metagame_archive.json</code>.
+        </div>`;
+    }
+  }
+
+  function render() {
+    const selectedFormat = document.getElementById('format').value;
+    const selectedOrg = document.getElementById('organizer').value;
+    const selectedYear = document.getElementById('year').value;
+
+    const filtered = dataset.filter(evt => {
+      if (selectedFormat !== 'ALL' && evt.format !== selectedFormat) return false;
+      if (selectedOrg !== 'ALL' && evt.organizer.id !== selectedOrg) return false;
+      if (selectedYear !== 'ALL' && evt.year !== selectedYear) return false;
+      return true;
+    });
+
+    const eventsList = document.getElementById('events-list');
+
+    if (filtered.length === 0) {
+      eventsList.innerHTML = `<div class="event-card muted-text">No tournaments match your current filters.</div>`;
+      return;
+    }
+
+    eventsList.innerHTML = filtered.map(evt => `
+      <div class="event-card">
+        <div class="event-header">
+          <div>
+            <div class="event-title">${evt.name}</div>
+            <div class="event-meta">
+              📍 ${evt.city}, ${evt.country} (${evt.region}) &bull; 🗓️ ${evt.date}
+            </div>
+            <div class="event-meta">
+              Organizer: <strong>${evt.organizer.name}</strong>
+            </div>
+          </div>
+          <span class="tag">${evt.format}</span>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Finish</th>
+              <th>Archetype</th>
+              <th>Player</th>
+              <th>Share</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${evt.archetypes.map((arch, index) => `
+              <tr class="clickable" onclick="inspectDeck('${evt.id}', ${index})">
+                <td>${arch.rank}</td>
+                <td><strong>${arch.name}</strong></td>
+                <td>${arch.player}</td>
+                <td>${arch.share}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `).join('');
+  }
+
+  window.inspectDeck = function(eventId, archIndex) {
+    const evt = dataset.find(e => e.id === eventId);
+    const arch = evt.archetypes[archIndex];
+
+    const mainText = arch.mainboard.join('\n');
+    const sideText = arch.sideboard.length ? '\n\nSideboard:\n' + arch.sideboard.join('\n') : '';
+    const fullText = mainText + sideText;
+
+    document.getElementById('deck-inspector').innerHTML = `
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+        <strong style="color:var(--accent); font-size:1rem;">${arch.name}</strong>
+        <span class="tag">${arch.rank}</span>
+      </div>
+      <div class="event-meta" style="margin-bottom: 1rem;">
+        ${evt.name} (${evt.year}) &bull; Player: ${arch.player}
+      </div>
+
+      <div class="deck-section-label">Mainboard (${arch.mainboard.length} entries)</div>
+      <ul class="card-list">
+        ${arch.mainboard.map(card => `<li><span>${card}</span></li>`).join('')}
+      </ul>
+
+      ${arch.sideboard.length ? `
+        <div class="deck-section-label">Sideboard (${arch.sideboard.length} entries)</div>
+        <ul class="card-list">
+          ${arch.sideboard.map(card => `<li><span>${card}</span></li>`).join('')}
+        </ul>
+      ` : ''}
+
+      <button class="btn" onclick="navigator.clipboard.writeText(\`${fullText}\`); alert('Plaintext decklist copied to clipboard!');">
+        [COPY RAW DECKLIST TEXT]
+      </button>
+    `;
+  };
+
+  // Run on page load
+  loadData();
+</script>
+
+</body>
+</html>
