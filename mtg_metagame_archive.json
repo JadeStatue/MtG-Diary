@@ -1,7 +1,7 @@
 {
   "events": [
     {
-      "id": "fanfinity-rc-athens-2023",
+      "id": "emea-rc-athens-2023",
       "name": "European Regional Championship Athens",
       "date": "2023-06-03",
       "year": "2023",
@@ -10,45 +10,68 @@
       "country": "Greece",
       "region": "Europe / EMEA",
       "organizer": {
-        "name": "Fanfinity",
+        "name": "Fanfinity / EMEA Partner",
         "region": "Europe / EMEA",
         "official": true
       },
       "archetypes": [
         {
-          "rank": "Winner",
+          "rank": "1st Place (Winner)",
           "name": "Rakdos Midrange",
-          "share": "28.0%",
           "player": "Javier Dominguez",
+          "share": "28.0%",
           "mainboard": [
             "4 Thoughtseize",
             "4 Bloodtithe Harvester",
             "4 Fable of the Mirror-Breaker",
             "3 Fatal Push",
             "2 Blood Crypt",
-            "4 Blackcleave Cliffs"
+            "4 Blackcleave Cliffs",
+            "4 Swamp",
+            "2 Mountain"
           ],
           "sideboard": [
             "2 Duress",
             "2 Rona's Vortex",
-            "2 Ray of Enfeeblement"
+            "2 Ray of Enfeeblement",
+            "1 Extinction Event"
           ]
         },
         {
-          "rank": "Runner-Up",
+          "rank": "2nd Place",
           "name": "Mono-Green Devotion",
-          "share": "21.5%",
           "player": "Top 8 Competitor",
+          "share": "21.5%",
           "mainboard": [
             "4 Karn, the Great Creator",
             "4 Cavalier of Thorns",
             "4 Llanowar Elves",
             "4 Elvish Mystic",
-            "4 Nykthos, Shrine to Nyx"
+            "4 Nykthos, Shrine to Nyx",
+            "4 Storm the Festival"
           ],
           "sideboard": [
             "1 The Chain Veil",
-            "1 Pithing Needle"
+            "1 Pithing Needle",
+            "1 Skysovereign, Consul Flagship"
+          ]
+        },
+        {
+          "rank": "Top 4",
+          "name": "Azorius Control",
+          "player": "Elena Rossi",
+          "share": "14.2%",
+          "mainboard": [
+            "4 The Wandering Emperor",
+            "4 Supreme Verdict",
+            "4 Memory Deluge",
+            "3 Teferi, Hero of Dominaria",
+            "4 Hallowed Fountain"
+          ],
+          "sideboard": [
+            "2 Dovin's Veto",
+            "2 Rest in Peace",
+            "2 Aether Gust"
           ]
         }
       ]
@@ -71,26 +94,46 @@
         {
           "rank": "1st Place",
           "name": "Izzet Murktide",
-          "share": "16.4%",
-          "player": "Jane Doe",
+          "player": "Alex Mercer",
+          "share": "18.4%",
           "mainboard": [
             "4 Ragavan, Nimble Pilferer",
             "4 Murktide Regent",
             "4 Dragon's Rage Channeler",
             "4 Counterspell",
             "4 Lightning Bolt",
+            "4 Consider",
             "18 Island"
           ],
           "sideboard": [
             "2 Blood Moon",
-            "2 Flusterstorm"
+            "2 Flusterstorm",
+            "2 Engineered Explosives"
+          ]
+        },
+        {
+          "rank": "2nd Place",
+          "name": "Amulet Titan",
+          "player": "Chris Muller",
+          "share": "15.1%",
+          "mainboard": [
+            "4 Primeval Titan",
+            "4 Amulet of Vigor",
+            "4 Summoner's Pact",
+            "4 Urza's Saga",
+            "4 Simic Growth Chamber"
+          ],
+          "sideboard": [
+            "2 Endurance",
+            "2 Force of Vigor",
+            "1 Bojuka Bog"
           ]
         }
       ]
     },
     {
-      "id": "bigmagic-jp-2023",
-      "name": "Big Magic Open Tokyo",
+      "id": "bigmagic-tokyo-2023",
+      "name": "Big Magic Championship Tokyo",
       "date": "2023-11-12",
       "year": "2023",
       "format": "Standard",
@@ -104,19 +147,57 @@
       },
       "archetypes": [
         {
-          "rank": "Winner",
+          "rank": "1st Place",
           "name": "Esper Midrange",
-          "share": "22.1%",
           "player": "Kenji Tsumura",
+          "share": "24.5%",
           "mainboard": [
             "4 Raffine, Scheming Seer",
             "4 Deep-Cavern Bat",
             "4 Go for the Throat",
-            "3 Wedding Announcement"
+            "3 Wedding Announcement",
+            "4 Plaza of Heroes"
           ],
           "sideboard": [
             "2 Disdainful Stroke",
-            "2 Cut Down"
+            "2 Cut Down",
+            "2 Destroy Evil"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "axion-uk-modern-2023",
+      "name": "Axion Now Mega Modern UK",
+      "date": "2023-09-16",
+      "year": "2023",
+      "format": "Modern",
+      "city": "Birmingham",
+      "country": "UK",
+      "region": "Global",
+      "organizer": {
+        "id": "independent",
+        "name": "Independent TO",
+        "official": false
+      },
+      "archetypes": [
+        {
+          "rank": "1st Place",
+          "name": "Scam (Rakdos Evoke)",
+          "player": "Oliver Wright",
+          "share": "22.0%",
+          "mainboard": [
+            "4 Grief",
+            "4 Fury",
+            "4 Orcish Bowmasters",
+            "4 Feign Death",
+            "4 Dauthi Voidwalker",
+            "4 Blood Crypt"
+          ],
+          "sideboard": [
+            "2 Chalice of the Void",
+            "2 Engineered Explosives",
+            "2 Blood Moon"
           ]
         }
       ]
